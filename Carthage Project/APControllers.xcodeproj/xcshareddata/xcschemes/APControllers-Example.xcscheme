@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E2A7394A2260CFC700E97D55"
-               BuildableName = "Example.app"
-               BlueprintName = "Example"
+               BuildableName = "APControllers-Example.app"
+               BlueprintName = "APControllers-Example"
                ReferencedContainer = "container:APControllers.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -27,6 +27,15 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "E2A7394A2260CFC700E97D55"
+            BuildableName = "APControllers-Example.app"
+            BlueprintName = "APControllers-Example"
+            ReferencedContainer = "container:APControllers.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -39,15 +48,6 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E2A7394A2260CFC700E97D55"
-            BuildableName = "Example.app"
-            BlueprintName = "Example"
-            ReferencedContainer = "container:APControllers.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -64,8 +64,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E2A7394A2260CFC700E97D55"
-            BuildableName = "Example.app"
-            BlueprintName = "Example"
+            BuildableName = "APControllers-Example.app"
+            BlueprintName = "APControllers-Example"
             ReferencedContainer = "container:APControllers.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -93,8 +93,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E2A7394A2260CFC700E97D55"
-            BuildableName = "Example.app"
-            BlueprintName = "Example"
+            BuildableName = "APControllers-Example.app"
+            BlueprintName = "APControllers-Example"
             ReferencedContainer = "container:APControllers.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

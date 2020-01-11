@@ -29,7 +29,7 @@ echo -e "\nBuilding Pods project..."
 set -o pipefail && xcodebuild -workspace "Pods Project/APControllers.xcworkspace" -scheme "APControllers-Example" -configuration "Release" -sdk iphonesimulator | xcpretty
 
 echo -e "\nBuilding Carthage project..."
-set -o pipefail && xcodebuild -project "${carthage_xcodeproj_path}" -sdk iphonesimulator -target "Example" | xcpretty
+set -o pipefail && xcodebuild -project "${carthage_xcodeproj_path}" -sdk iphonesimulator -target "APControllers-Example" | xcpretty
 
 echo -e "\nBuilding with Carthage..."
 carthage build --no-skip-current --cache-builds
@@ -44,7 +44,7 @@ else
     echo "Using iPhone SE simulator with ID: '${simulator_id}'"
 fi
 
-set -o pipefail && xcodebuild -project "${carthage_xcodeproj_path}" -sdk iphonesimulator -scheme "Example" -destination "platform=iOS Simulator,id=${simulator_id}" test | xcpretty
+set -o pipefail && xcodebuild -project "${carthage_xcodeproj_path}" -sdk iphonesimulator -scheme "APControllers-Example" -destination "platform=iOS Simulator,id=${simulator_id}" test | xcpretty
 
 echo ""
 echo "SUCCESS!"

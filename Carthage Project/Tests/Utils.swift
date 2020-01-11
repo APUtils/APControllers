@@ -10,7 +10,7 @@ import UIKit
 import Nimble
 import Nimble_Snapshots
 import Quick
-@testable import APControllers
+@testable import APControllers_Example
 
 // ******************************* MARK: - UI Tests Window
 

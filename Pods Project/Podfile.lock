@@ -27,7 +27,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/APUtils/APExtensions
 
 SPEC CHECKSUMS:
-  APControllers: 4332f649bce4ef3aa576c4c5310c0f866ed062d5
+  APControllers: e1d3593d20f76e9db49ab44cb12a1d12cf0c6c01
   APExtensions: e0377240c9db7bc42c3b864c039ba70c1b4034a3
 
 PODFILE CHECKSUM: 4bf78aeca8e09bc42bccace2121edece85b4759d

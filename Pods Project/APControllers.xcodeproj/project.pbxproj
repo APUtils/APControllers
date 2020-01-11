@@ -221,10 +221,12 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-APControllers_Example/Pods-APControllers_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/APControllers/APControllers.framework",
 				"${BUILT_PRODUCTS_DIR}/APExtensions/APExtensions.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/APControllers.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/APExtensions.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,17 +6,11 @@
 [![Platform](https://img.shields.io/cocoapods/p/APControllers.svg?style=flat)](http://cocoapods.org/pods/APControllers)
 [![CI Status](http://img.shields.io/travis/APUtils/APControllers.svg?style=flat)](https://travis-ci.org/APUtils/APControllers)
 
-TODO
+A helpful collection of controllers.
 
 ## Example
 
 Clone the repo and then open `Carthage Project/APControllers.xcodeproj`
-
-## GIF animation
-
-TODO
-
-<img src="Example/APControllers/<#NAME#>.gif"/>
 
 ## Installation
 
