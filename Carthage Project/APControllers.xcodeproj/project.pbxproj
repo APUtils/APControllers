@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D3445C123CA72190053C1C4 /* EstimatedRowHeightController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3445BF23CA72190053C1C4 /* EstimatedRowHeightController.swift */; };
+		0D3445C223CA72190053C1C4 /* ExactRowHeightController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3445C023CA72190053C1C4 /* ExactRowHeightController.swift */; };
+		0D3445C723CA75850053C1C4 /* Sequence+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3445C523CA75850053C1C4 /* Sequence+Extension.swift */; };
+		0D3445CB23CA76B60053C1C4 /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3445C923CA76B60053C1C4 /* Collection+Extension.swift */; };
+		0D3445CD23CA7D900053C1C4 /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3445CC23CA7D900053C1C4 /* CGFloat+Extension.swift */; };
+		0D3445CF23CA7DD40053C1C4 /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3445CE23CA7DD40053C1C4 /* Dictionary+Extension.swift */; };
 		0D5A7DB823B4FC4A00E0687B /* FBSnapshotTestCase.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0491600AEA500A849511DBA7 /* FBSnapshotTestCase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0D5A7DB923B4FC4A00E0687B /* Nimble_Snapshots.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 40B2AC5FE675C1BC6FEA20DC /* Nimble_Snapshots.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0D5A7DBA23B4FC4A00E0687B /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E2A7396D2260D99900E97D55 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -75,23 +81,29 @@
 
 /* Begin PBXFileReference section */
 		0491600AEA500A849511DBA7 /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSnapshotTestCase.framework; path = Carthage/Build/iOS/FBSnapshotTestCase.framework; sourceTree = "<group>"; };
+		0D3445BF23CA72190053C1C4 /* EstimatedRowHeightController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EstimatedRowHeightController.swift; sourceTree = "<group>"; };
+		0D3445C023CA72190053C1C4 /* ExactRowHeightController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExactRowHeightController.swift; sourceTree = "<group>"; };
+		0D3445C523CA75850053C1C4 /* Sequence+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extension.swift"; sourceTree = "<group>"; };
+		0D3445C923CA76B60053C1C4 /* Collection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
+		0D3445CC23CA7D900053C1C4 /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
+		0D3445CE23CA7DD40053C1C4 /* Dictionary+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
 		0D9A78A823C0CBD600BE1A8A /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		0DBC7CE723B9577200CD0EA1 /* APExtensions.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APExtensions.framework; path = ../Carthage/Build/iOS/APExtensions.framework; sourceTree = "<group>"; };
 		27A65933230C2FF4F758F562 /* carthageUpdate.command */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; name = carthageUpdate.command; path = Scripts/Carthage/carthageUpdate.command; sourceTree = "<group>"; };
 		40B2AC5FE675C1BC6FEA20DC /* Nimble_Snapshots.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble_Snapshots.framework; path = Carthage/Build/iOS/Nimble_Snapshots.framework; sourceTree = "<group>"; };
-		48F98DA54A9774DA50A42978 /* DEPLOY PROCESS.md */ = {isa = PBXFileReference; includeInIndex = 1; name = "DEPLOY PROCESS.md"; path = "../DEPLOY PROCESS.md"; sourceTree = "<group>"; };
-		4F0FB0998B9E0BA1DBA0B5C0 /* APControllers.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = APControllers.podspec; path = ../APControllers.podspec; sourceTree = "<group>"; };
-		4FBAC3F5242A68EA32D78E21 /* podCheck.command */ = {isa = PBXFileReference; includeInIndex = 1; name = podCheck.command; path = ../podCheck.command; sourceTree = "<group>"; };
-		5FB24080F7F33A547E8D4B32 /* checkBuild.command */ = {isa = PBXFileReference; includeInIndex = 1; name = checkBuild.command; path = ../checkBuild.command; sourceTree = "<group>"; };
-		5FCB19447C6E1C9AE711BED2 /* CHANGELOG.md */ = {isa = PBXFileReference; includeInIndex = 1; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
-		63DAA65564C41ABAA17F7FED /* podUpdate.command */ = {isa = PBXFileReference; includeInIndex = 1; name = podUpdate.command; path = "../Pods Project/Scripts/Cocoapods/podUpdate.command"; sourceTree = "<group>"; };
-		685D96F767772BABCB8AE14B /* .travis.yml */ = {isa = PBXFileReference; includeInIndex = 1; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
+		48F98DA54A9774DA50A42978 /* DEPLOY PROCESS.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = "DEPLOY PROCESS.md"; path = "../DEPLOY PROCESS.md"; sourceTree = "<group>"; };
+		4F0FB0998B9E0BA1DBA0B5C0 /* APControllers.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = APControllers.podspec; path = ../APControllers.podspec; sourceTree = "<group>"; };
+		4FBAC3F5242A68EA32D78E21 /* podCheck.command */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; name = podCheck.command; path = ../podCheck.command; sourceTree = "<group>"; };
+		5FB24080F7F33A547E8D4B32 /* checkBuild.command */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; name = checkBuild.command; path = ../checkBuild.command; sourceTree = "<group>"; };
+		5FCB19447C6E1C9AE711BED2 /* CHANGELOG.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
+		63DAA65564C41ABAA17F7FED /* podUpdate.command */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; name = podUpdate.command; path = "../Pods Project/Scripts/Cocoapods/podUpdate.command"; sourceTree = "<group>"; };
+		685D96F767772BABCB8AE14B /* .travis.yml */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.yaml; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
 		722BFDE9DE58393B9D916719 /* carthageRemove.command */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; name = carthageRemove.command; path = Scripts/Carthage/carthageRemove.command; sourceTree = "<group>"; };
 		75997ED1E9FAC56B9BEC3F0E /* carthageAdd.command */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; name = carthageAdd.command; path = Scripts/Carthage/carthageAdd.command; sourceTree = "<group>"; };
-		7C5941DD737229046FCE9F7F /* .cocoadocs.yml */ = {isa = PBXFileReference; includeInIndex = 1; name = .cocoadocs.yml; path = ../.cocoadocs.yml; sourceTree = "<group>"; };
-		942547B30E85EC7D0B2AF8FF /* podPush.command */ = {isa = PBXFileReference; includeInIndex = 1; name = podPush.command; path = ../podPush.command; sourceTree = "<group>"; };
-		ABCBB5492A14510AEC89BB73 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		B297DC76A924AA449EC91A37 /* .gitignore */ = {isa = PBXFileReference; includeInIndex = 1; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
+		7C5941DD737229046FCE9F7F /* .cocoadocs.yml */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.yaml; name = .cocoadocs.yml; path = ../.cocoadocs.yml; sourceTree = "<group>"; };
+		942547B30E85EC7D0B2AF8FF /* podPush.command */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; name = podPush.command; path = ../podPush.command; sourceTree = "<group>"; };
+		ABCBB5492A14510AEC89BB73 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		B297DC76A924AA449EC91A37 /* .gitignore */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
 		E202681322117D03004CC28A /* APControllers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = APControllers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E202681622117D03004CC28A /* APControllers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APControllers.h; sourceTree = "<group>"; };
 		E202681722117D03004CC28A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -109,7 +121,7 @@
 		E2A7396D2260D99900E97D55 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		E2C3136822DF77F300D6797A /* __ReferenceImages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = __ReferenceImages; sourceTree = "<group>"; };
 		E2C3136922DF77F300D6797A /* __FailureDiffs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = __FailureDiffs; sourceTree = "<group>"; };
-		F5D2B556CA2337E976B7077E /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		F5D2B556CA2337E976B7077E /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +156,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D3445C323CA74480053C1C4 /* _Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0D3445C523CA75850053C1C4 /* Sequence+Extension.swift */,
+				0D3445C923CA76B60053C1C4 /* Collection+Extension.swift */,
+				0D3445CC23CA7D900053C1C4 /* CGFloat+Extension.swift */,
+				0D3445CE23CA7DD40053C1C4 /* Dictionary+Extension.swift */,
+			);
+			path = _Extensions;
+			sourceTree = "<group>";
+		};
 		1834AC72A69DC91E1F3B8EDA /* _Carthage */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +212,9 @@
 		E2766F332260FFF7003BDA19 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				0D3445C323CA74480053C1C4 /* _Extensions */,
+				0D3445BF23CA72190053C1C4 /* EstimatedRowHeightController.swift */,
+				0D3445C023CA72190053C1C4 /* ExactRowHeightController.swift */,
 			);
 			name = Sources;
 			path = ../../APControllers/Classes;
@@ -350,7 +376,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E202680D22117D03004CC28A /* Build configuration list for PBXProject "PROJECTNAME" */;
+			buildConfigurationList = E202680D22117D03004CC28A /* Build configuration list for PBXProject "APControllers" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -461,6 +487,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D3445C723CA75850053C1C4 /* Sequence+Extension.swift in Sources */,
+				0D3445C123CA72190053C1C4 /* EstimatedRowHeightController.swift in Sources */,
+				0D3445C223CA72190053C1C4 /* ExactRowHeightController.swift in Sources */,
+				0D3445CB23CA76B60053C1C4 /* Collection+Extension.swift in Sources */,
+				0D3445CD23CA7D900053C1C4 /* CGFloat+Extension.swift in Sources */,
+				0D3445CF23CA7DD40053C1C4 /* Dictionary+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -644,6 +676,7 @@
 		E202681C22117D03004CC28A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -664,6 +697,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.anton-plebanovich.APControllers";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -671,6 +706,7 @@
 		E202681D22117D03004CC28A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -691,6 +727,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.anton-plebanovich.APControllers";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -788,7 +825,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E202680D22117D03004CC28A /* Build configuration list for PBXProject "PROJECTNAME" */ = {
+		E202680D22117D03004CC28A /* Build configuration list for PBXProject "APControllers" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E202681922117D03004CC28A /* Debug */,
