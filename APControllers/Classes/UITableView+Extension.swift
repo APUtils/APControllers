@@ -65,13 +65,37 @@ extension UITableView {
     }
 }
 
+public protocol CellConfigurator: class {
+    func configureCell(_ cell: UITableViewCell, forRowAt indexPath: IndexPath)
+}
+
 public extension UITableView {
     
     /// Calculates exact cell size using providded cell and cell configuration closure.
+    /// - parameter cell: Cell which will be used for height measurement.
+    /// - parameter configureCell: Cell which will be used for height measurement.
+    /// - parameter cell: Cell that requires configuration.
+    /// - parameter indexPath: Index path for cell that requires configuration.
     /// - warning: Replaces and proxies tableView's `delegate` property
     /// so be sure to call this method when tableView's `delegate` is already set.
     func computeRowHeightAutomatically<T: UITableViewCell>(cell: T, configureCell: @escaping (_ cell: T, _ indexPath: IndexPath) -> Void) {
         let controller = ExactRowHeightController<T>(cell: cell, tableView: self, configureCell: configureCell)
+        
+        // Capture
+        exactRowHeightController = controller
+        
+        delegate = controller
+    }
+    
+    /// Calculates exact cell size using providded cell and cell configuration closure.
+    /// - parameter cell: Cell which will be used for height measurement.
+    /// - parameter cellConfigurator: Cell configurator which will be captured weakly.
+    /// - warning: Replaces and proxies tableView's `delegate` property
+    /// so be sure to call this method when tableView's `delegate` is already set.
+    func computeRowHeightAutomatically(cell: UITableViewCell, cellConfigurator: CellConfigurator?) {
+        let controller = ExactRowHeightController<UITableViewCell>(cell: cell, tableView: self, configureCell: { [weak cellConfigurator] cell, indexPath in
+            cellConfigurator?.configureCell(cell, forRowAt: indexPath)
+        })
         
         // Capture
         exactRowHeightController = controller
@@ -90,9 +114,26 @@ public extension UITableView {
 public extension UITableView {
     
     /// Optimizes both estimated and exact height computations.
+    /// - parameter cell: Cell which will be used for height measurement.
+    /// - parameter configureCell: Cell which will be used for height measurement.
+    /// - parameter cell: Cell that requires configuration.
+    /// - parameter indexPath: Index path for cell that requires configuration.
+    /// - warning: Replaces and proxies tableView's `delegate` property
+    /// so be sure to call this method when tableView's `delegate` is already set.
     func optimizeCellHeightComputations<T: UITableViewCell>(cell: T, configureCell: @escaping (_ cell: T, _ indexPath: IndexPath) -> Void) {
         
         computeRowHeightAutomatically(cell: cell, configureCell: configureCell)
         handleEstimatedSizeAutomatically = true
     }
+    
+    /// Optimizes both estimated and exact height computations.
+    /// - parameter cell: Cell which will be used for height measurement.
+    /// - parameter cellConfigurator: Cell configurator which will be captured weakly.
+    /// - warning: Replaces and proxies tableView's `delegate` property
+    /// so be sure to call this method when tableView's `delegate` is already set.
+    func optimizeCellHeightComputations(cell: UITableViewCell, cellConfigurator: CellConfigurator?) {
+        computeRowHeightAutomatically(cell: cell, cellConfigurator: cellConfigurator)
+        handleEstimatedSizeAutomatically = true
+    }
+    
 }
