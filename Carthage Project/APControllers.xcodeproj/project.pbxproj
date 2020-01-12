@@ -175,10 +175,10 @@
 		0D3445C323CA74480053C1C4 /* _Internal Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				0D3445C523CA75850053C1C4 /* Sequence+Extension.swift */,
-				0D3445C923CA76B60053C1C4 /* Collection+Extension.swift */,
 				0D3445CC23CA7D900053C1C4 /* CGFloat+Extension.swift */,
+				0D3445C923CA76B60053C1C4 /* Collection+Extension.swift */,
 				0D3445CE23CA7DD40053C1C4 /* Dictionary+Extension.swift */,
+				0D3445C523CA75850053C1C4 /* Sequence+Extension.swift */,
 			);
 			path = "_Internal Extensions";
 			sourceTree = "<group>";
