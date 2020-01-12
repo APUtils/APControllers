@@ -10,9 +10,9 @@ import UIKit
 
 /// Controller that improves UITableView scrolling and animation experience.
 /// - Note: You should store `ExactRowHeightController` or it'll be deallocated.
-private final class ExactRowHeightController<T: UITableViewCell>: ObjectProxy, UITableViewDelegate {
+public final class ExactRowHeightController<T: UITableViewCell>: ObjectProxy, UITableViewDelegate {
     
-    typealias ConfigureCell = (_ cell: T, _ indexPath: IndexPath) -> Void
+    public typealias ConfigureCell = (_ cell: T, _ indexPath: IndexPath) -> Void
     
     // ******************************* MARK: - Properties
     
@@ -20,20 +20,20 @@ private final class ExactRowHeightController<T: UITableViewCell>: ObjectProxy, U
     private weak var tableView: UITableView?
     private let configureCell: ConfigureCell
     
-    weak var originalTableViewDelegate: UITableViewDelegate? {
+    private weak var originalTableViewDelegate: UITableViewDelegate? {
         return originalObject as? UITableViewDelegate
     }
     
     // ******************************* MARK: - Initialization and Setup
     
-    init(cell: T, baseTableViewDelegate: UITableViewDelegate?, configureCell: @escaping ConfigureCell) {
+    public init(cell: T, baseTableViewDelegate: UITableViewDelegate?, configureCell: @escaping ConfigureCell) {
         self.cell = cell
         self.configureCell = configureCell
         
         super.init(originalObject: baseTableViewDelegate as? NSObject)
     }
     
-    init(cell: T, tableView: UITableView?, configureCell: @escaping ConfigureCell) {
+    public init(cell: T, tableView: UITableView?, configureCell: @escaping ConfigureCell) {
         self.cell = cell
         self.tableView = tableView
         self.configureCell = configureCell
@@ -49,46 +49,12 @@ private final class ExactRowHeightController<T: UITableViewCell>: ObjectProxy, U
     
     // ******************************* MARK: - UITableViewDelegate
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         configureCell(cell, indexPath)
         let size = cell.systemLayoutSizeFitting(tableView.bounds.size,
                                                 withHorizontalFittingPriority: .required,
                                                 verticalFittingPriority: .init(1))
         
         return size.height.roundedUpToPixel
-    }
-}
-
-// ******************************* MARK: - UITableView Extension
-
-private var c_exactRowHeightControllerAssociationKey = 0
-
-public extension UITableView {
-    
-    /// Just retainer for a convenience
-    private var exactRowHeightController: Any? {
-        get {
-            return objc_getAssociatedObject(self, &c_exactRowHeightControllerAssociationKey)
-        }
-        set {
-            objc_setAssociatedObject(self, &c_exactRowHeightControllerAssociationKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-        }
-    }
-    
-    /// Calculates exact cell size using providded cell and cell configuration closure.
-    /// - warning: Replaces and proxies tableView's `delegate` property
-    /// so be sure to call this method when tableView's `delegate` is already set.
-    func computeRowHeightAutomatically<T: UITableViewCell>(cell: T, configureCell: @escaping (_ cell: T, _ indexPath: IndexPath) -> Void) {
-        let controller = ExactRowHeightController<T>(cell: cell, tableView: self, configureCell: configureCell)
-        
-        // Capture
-        exactRowHeightController = controller
-        
-        delegate = controller
-    }
-    
-    /// Stops rows automatic computation.
-    func stopComputeRowHeightAutomatically() {
-        exactRowHeightController = nil
     }
 }

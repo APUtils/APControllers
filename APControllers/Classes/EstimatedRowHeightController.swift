@@ -11,7 +11,7 @@ import UIKit
 /// Controller that improves UITableView scrolling and animation experience.
 /// - Note: You should assign tableView's `delegate` first and then create
 /// and store `EstimatedRowHeightController`. Everything else is automatic.
-private final class EstimatedRowHeightController: ObjectProxy, UITableViewDelegate {
+public final class EstimatedRowHeightController: ObjectProxy, UITableViewDelegate {
     
     // ******************************* MARK: - Private Properties
     
@@ -25,7 +25,7 @@ private final class EstimatedRowHeightController: ObjectProxy, UITableViewDelega
     
     // ******************************* MARK: - Initialization and Setup
     
-    init(baseTableViewDelegate: UITableViewDelegate) {
+    public init(baseTableViewDelegate: UITableViewDelegate) {
         UITableView._setupOnce
         super.init(originalObject: baseTableViewDelegate as? NSObject)
         
@@ -35,7 +35,7 @@ private final class EstimatedRowHeightController: ObjectProxy, UITableViewDelega
                                                object: tableView)
     }
     
-    init(tableView: UITableView) {
+    public init(tableView: UITableView) {
         UITableView._setupOnce
         self.tableView = tableView
         super.init(originalObject: tableView.delegate as? NSObject)
@@ -118,7 +118,7 @@ private final class EstimatedRowHeightController: ObjectProxy, UITableViewDelega
     
     // ******************************* MARK: - UITableViewDelegate
     
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         if let estimatedHeight = estimatedHeights[indexPath] {
             return estimatedHeight
         } else {
@@ -127,7 +127,7 @@ private final class EstimatedRowHeightController: ObjectProxy, UITableViewDelega
         }
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         // Prevent cell stuck in zero size.
         // Table view won't queue for actual height if 0 is returned for estimated.
         if cell.bounds.height > 0 {
@@ -146,7 +146,7 @@ private final class EstimatedRowHeightController: ObjectProxy, UITableViewDelega
         originalTableViewDelegate?.tableView?(tableView, willDisplay: cell, forRowAt: indexPath)
     }
     
-    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         estimatedHeights[indexPath] = cell.bounds.height
         originalTableViewDelegate?.tableView?(tableView, didEndDisplaying: cell, forRowAt: indexPath)
     }
@@ -338,42 +338,5 @@ private extension UITableView {
         }
         
         _apextensions_moveRow(at: indexPath, to: newIndexPath)
-    }
-}
-
-// ******************************* MARK: - UITableView Extension
-
-private var c_estimatedRowHeightControllerAssociationKey = 0
-
-public extension UITableView {
-    private var estimatedRowHeightController: Any? {
-        get {
-            return objc_getAssociatedObject(self, &c_estimatedRowHeightControllerAssociationKey)
-        }
-        set {
-            objc_setAssociatedObject(self, &c_estimatedRowHeightControllerAssociationKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-        }
-    }
-    
-    private var _handleEstimatedSizeAutomatically: Bool {
-        return estimatedRowHeightController != nil
-    }
-    
-    /// Store cells' sizes and uses them on recalculation.
-    /// - warning: Replaces and proxies tableView's `delegate` property
-    /// so be sure to assing this property when tableView's `delegate` already is set.
-    var handleEstimatedSizeAutomatically: Bool {
-        set {
-            guard newValue != _handleEstimatedSizeAutomatically else { return }
-            
-            if newValue {
-                estimatedRowHeightController = EstimatedRowHeightController(tableView: self)
-            } else {
-                estimatedRowHeightController = nil
-            }
-        }
-        get {
-            return _handleEstimatedSizeAutomatically
-        }
     }
 }

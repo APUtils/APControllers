@@ -26,6 +26,7 @@
 		0D5A7DBB23B4FC4A00E0687B /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E2A7396C2260D99900E97D55 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0D9A78A923C0CBD600BE1A8A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9A78A823C0CBD600BE1A8A /* Utils.swift */; };
 		0DBC7CE823B9577200CD0EA1 /* APExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DBC7CE723B9577200CD0EA1 /* APExtensions.framework */; };
+		0DC724F423CB8792005039BC /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC724F323CB8792005039BC /* UITableView+Extension.swift */; };
 		E202681822117D03004CC28A /* APControllers.h in Headers */ = {isa = PBXBuildFile; fileRef = E202681622117D03004CC28A /* APControllers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E275E06F229FF84E00E9900C /* APControllers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E202681322117D03004CC28A /* APControllers.framework */; };
 		E275E08322A03A8900E9900C /* APControllers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E202681322117D03004CC28A /* APControllers.framework */; };
@@ -103,6 +104,7 @@
 		0D3445FE23CB4E930053C1C4 /* ObjectProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectProxy.swift; sourceTree = "<group>"; };
 		0D9A78A823C0CBD600BE1A8A /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		0DBC7CE723B9577200CD0EA1 /* APExtensions.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APExtensions.framework; path = ../Carthage/Build/iOS/APExtensions.framework; sourceTree = "<group>"; };
+		0DC724F323CB8792005039BC /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		27A65933230C2FF4F758F562 /* carthageUpdate.command */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; name = carthageUpdate.command; path = Scripts/Carthage/carthageUpdate.command; sourceTree = "<group>"; };
 		40B2AC5FE675C1BC6FEA20DC /* Nimble_Snapshots.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble_Snapshots.framework; path = Carthage/Build/iOS/Nimble_Snapshots.framework; sourceTree = "<group>"; };
 		48F98DA54A9774DA50A42978 /* DEPLOY PROCESS.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = "DEPLOY PROCESS.md"; path = "../DEPLOY PROCESS.md"; sourceTree = "<group>"; };
@@ -170,7 +172,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0D3445C323CA74480053C1C4 /* _Extensions */ = {
+		0D3445C323CA74480053C1C4 /* _Private Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				0D3445C523CA75850053C1C4 /* Sequence+Extension.swift */,
@@ -178,7 +180,7 @@
 				0D3445CC23CA7D900053C1C4 /* CGFloat+Extension.swift */,
 				0D3445CE23CA7DD40053C1C4 /* Dictionary+Extension.swift */,
 			);
-			path = _Extensions;
+			path = "_Private Extensions";
 			sourceTree = "<group>";
 		};
 		0D3445D123CA86120053C1C4 /* TableView */ = {
@@ -239,10 +241,11 @@
 		E2766F332260FFF7003BDA19 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				0D3445C323CA74480053C1C4 /* _Extensions */,
+				0D3445C323CA74480053C1C4 /* _Private Extensions */,
 				0D3445BF23CA72190053C1C4 /* EstimatedRowHeightController.swift */,
 				0D3445C023CA72190053C1C4 /* ExactRowHeightController.swift */,
 				0D3445FE23CB4E930053C1C4 /* ObjectProxy.swift */,
+				0DC724F323CB8792005039BC /* UITableView+Extension.swift */,
 			);
 			name = Sources;
 			path = ../../APControllers/Classes;
@@ -525,6 +528,7 @@
 				0D3445CB23CA76B60053C1C4 /* Collection+Extension.swift in Sources */,
 				0D3445CD23CA7D900053C1C4 /* CGFloat+Extension.swift in Sources */,
 				0D3445CF23CA7DD40053C1C4 /* Dictionary+Extension.swift in Sources */,
+				0DC724F423CB8792005039BC /* UITableView+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

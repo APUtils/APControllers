@@ -40,10 +40,9 @@ final class TableViewVC: UIViewController {
     
     private func setupTableView() {
         tableView.registerNib(class: TableViewCell.self)
-        tableView.computeRowHeightAutomatically(cell: TableViewCell.instantiateFromXib()) { [weak self] in
+        tableView.optimizeCellHeightComputations(cell: TableViewCell.instantiateFromXib()) { [weak self] in
             self?.configureCell($0, indexPath: $1)
         }
-        tableView.handleEstimatedSizeAutomatically = true
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -8,7 +8,8 @@
 
 import Foundation
 
-class ObjectProxy: NSObject {
+/// Base object proxy class.
+public class ObjectProxy: NSObject {
     
     // ******************************* MARK: - Properties
     
@@ -20,12 +21,12 @@ class ObjectProxy: NSObject {
     
     private override init() { fatalError("Use init(originalObject:) instead") }
     
-    init(originalObject: NSObject?) {
+    public init(originalObject: NSObject?) {
         self.originalObject = originalObject
         super.init()
     }
     
-    override func responds(to aSelector: Selector!) -> Bool {
+    override public func responds(to aSelector: Selector!) -> Bool {
         if let responds = cachedSelectors[aSelector] {
             return responds
         }
@@ -41,7 +42,7 @@ class ObjectProxy: NSObject {
         return responds
     }
     
-    override func forwardingTarget(for aSelector: Selector!) -> Any? {
+    override public func forwardingTarget(for aSelector: Selector!) -> Any? {
         if let forwardingTarget = cachedForwardingTargets[aSelector] {
             return forwardingTarget
             
