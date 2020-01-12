@@ -172,7 +172,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0D3445C323CA74480053C1C4 /* _Private Extensions */ = {
+		0D3445C323CA74480053C1C4 /* _Internal Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				0D3445C523CA75850053C1C4 /* Sequence+Extension.swift */,
@@ -180,7 +180,7 @@
 				0D3445CC23CA7D900053C1C4 /* CGFloat+Extension.swift */,
 				0D3445CE23CA7DD40053C1C4 /* Dictionary+Extension.swift */,
 			);
-			path = "_Private Extensions";
+			path = "_Internal Extensions";
 			sourceTree = "<group>";
 		};
 		0D3445D123CA86120053C1C4 /* TableView */ = {
@@ -241,7 +241,7 @@
 		E2766F332260FFF7003BDA19 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				0D3445C323CA74480053C1C4 /* _Private Extensions */,
+				0D3445C323CA74480053C1C4 /* _Internal Extensions */,
 				0D3445BF23CA72190053C1C4 /* EstimatedRowHeightController.swift */,
 				0D3445C023CA72190053C1C4 /* ExactRowHeightController.swift */,
 				0D3445FE23CB4E930053C1C4 /* ObjectProxy.swift */,

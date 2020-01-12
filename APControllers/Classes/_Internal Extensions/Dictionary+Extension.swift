@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension Dictionary {
+extension Dictionary {
     
     /// Map keys and values together into a new dictionary.
     /// - warning: Resulting keys must be unique!
