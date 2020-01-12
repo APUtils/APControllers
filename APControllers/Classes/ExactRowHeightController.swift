@@ -51,9 +51,9 @@ public final class ExactRowHeightController<T: UITableViewCell>: ObjectProxy, UI
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         configureCell(cell, indexPath)
-        let size = cell.systemLayoutSizeFitting(tableView.bounds.size,
-                                                withHorizontalFittingPriority: .required,
-                                                verticalFittingPriority: .init(1))
+        let size = cell.contentView.systemLayoutSizeFitting(tableView.bounds.size,
+                                                            withHorizontalFittingPriority: .required,
+                                                            verticalFittingPriority: .init(1))
         
         return size.height.roundedUpToPixel
     }
