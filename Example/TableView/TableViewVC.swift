@@ -40,9 +40,34 @@ final class TableViewVC: UIViewController {
     
     private func setupTableView() {
         tableView.registerNib(class: TableViewCell.self)
+        
+        // 2.0s first load
+        // 1.5s randomize
+//        tableView.estimatedRowHeight = 44
+//        tableView.rowHeight = UITableView.automaticDimension
+        
+        // 2.75s first load
+        // 2.0s randomize
+//        tableView.handleEstimatedSizeAutomatically = true
+        
+        // 2.8s first load
+        // 2.0s randomize
         tableView.optimizeCellHeightComputations(cell: TableViewCell.instantiateFromXib()) { [weak self] in
             self?.configureCell($0, indexPath: $1)
         }
+        
+        // 1518.2s first load
+        // ? randomize
+//        tableView.computeRowHeightAutomatically(cell: TableViewCell.instantiateFromXib()) { [weak self] in
+//            self?.configureCell($0, indexPath: $1)
+//        }
+        
+        // 2.1s first load
+        // 1.5s randomize
+//        tableView.estimatedRowHeight = 44
+//        tableView.computeRowHeightAutomatically(cell: TableViewCell.instantiateFromXib()) { [weak self] in
+//            self?.configureCell($0, indexPath: $1)
+//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -53,9 +78,7 @@ final class TableViewVC: UIViewController {
     // ******************************* MARK: - Actions
     
     @IBAction private func onDebugTap(_ sender: Any) {
-        let date1 = Date()
         vm.randomize()
-        NSLog("******** Randomize %f", Date().timeIntervalSince(date1))
         
         let date2 = Date()
         tableView.reloadRows(at: tableView.visibleIndexPaths, with: .automatic)
