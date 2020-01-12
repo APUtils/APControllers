@@ -19,6 +19,7 @@
 		0D3445E823CA86730053C1C4 /* TableViewCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3445E323CA86640053C1C4 /* TableViewCellVM.swift */; };
 		0D3445E923CA86730053C1C4 /* TableViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3445E023CA86640053C1C4 /* TableViewVC.swift */; };
 		0D3445EA23CA86730053C1C4 /* TableViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3445E123CA86640053C1C4 /* TableViewVM.swift */; };
+		0D3445FF23CB4E930053C1C4 /* ObjectProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3445FE23CB4E930053C1C4 /* ObjectProxy.swift */; };
 		0D5A7DB823B4FC4A00E0687B /* FBSnapshotTestCase.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0491600AEA500A849511DBA7 /* FBSnapshotTestCase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0D5A7DB923B4FC4A00E0687B /* Nimble_Snapshots.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 40B2AC5FE675C1BC6FEA20DC /* Nimble_Snapshots.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0D5A7DBA23B4FC4A00E0687B /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E2A7396D2260D99900E97D55 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -99,6 +100,7 @@
 		0D3445E223CA86640053C1C4 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		0D3445E323CA86640053C1C4 /* TableViewCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellVM.swift; sourceTree = "<group>"; };
 		0D3445E423CA86640053C1C4 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		0D3445FE23CB4E930053C1C4 /* ObjectProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectProxy.swift; sourceTree = "<group>"; };
 		0D9A78A823C0CBD600BE1A8A /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		0DBC7CE723B9577200CD0EA1 /* APExtensions.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APExtensions.framework; path = ../Carthage/Build/iOS/APExtensions.framework; sourceTree = "<group>"; };
 		27A65933230C2FF4F758F562 /* carthageUpdate.command */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; name = carthageUpdate.command; path = Scripts/Carthage/carthageUpdate.command; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				0D3445C323CA74480053C1C4 /* _Extensions */,
 				0D3445BF23CA72190053C1C4 /* EstimatedRowHeightController.swift */,
 				0D3445C023CA72190053C1C4 /* ExactRowHeightController.swift */,
+				0D3445FE23CB4E930053C1C4 /* ObjectProxy.swift */,
 			);
 			name = Sources;
 			path = ../../APControllers/Classes;
@@ -515,6 +518,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D3445FF23CB4E930053C1C4 /* ObjectProxy.swift in Sources */,
 				0D3445C723CA75850053C1C4 /* Sequence+Extension.swift in Sources */,
 				0D3445C123CA72190053C1C4 /* EstimatedRowHeightController.swift in Sources */,
 				0D3445C223CA72190053C1C4 /* ExactRowHeightController.swift in Sources */,
@@ -711,6 +715,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -726,10 +732,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.anton-plebanovich.APControllers";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -741,6 +747,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = NO;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -756,6 +763,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.anton-plebanovich.APControllers";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -770,6 +778,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",

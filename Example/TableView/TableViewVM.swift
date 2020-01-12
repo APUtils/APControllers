@@ -12,17 +12,29 @@ struct TableViewVM {
     
     // ******************************* MARK: - Public Properties
     
-    static let cellsCount: Int = 100
+    static let cellsCount: Int = 1000000
     
     // ******************************* MARK: - Public Properties
     
-    var cellVMs: [TableViewCellVM]
+    private var cellVMs: [IndexPath: TableViewCellVM] = [:]
     
     // ******************************* MARK: - Initialization and Setup
     
-    init() {
-        self.cellVMs = stride(from: 0, to: TableViewVM.cellsCount, by: 1)
-            .map { _ in TableViewCellVM() }
+    init() {}
+    
+    // ******************************* MARK: - Public Methods
+    
+    mutating func getViewModel(indexPath: IndexPath) -> TableViewCellVM {
+        if let vm = cellVMs[indexPath] {
+            return vm
+        } else {
+            let vm = TableViewCellVM()
+            cellVMs[indexPath] = vm
+            return vm
+        }
     }
     
+    mutating func randomize() {
+        cellVMs = [:]
+    }
 }

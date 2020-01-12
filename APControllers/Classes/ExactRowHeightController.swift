@@ -10,70 +10,46 @@ import UIKit
 
 /// Controller that improves UITableView scrolling and animation experience.
 /// - Note: You should store `ExactRowHeightController` or it'll be deallocated.
-open class ExactRowHeightController<T: UITableViewCell>: NSObject, UITableViewDelegate {
+private final class ExactRowHeightController<T: UITableViewCell>: ObjectProxy, UITableViewDelegate {
     
-    public typealias ConfigureCell = (_ cell: T, _ indexPath: IndexPath) -> Void
+    typealias ConfigureCell = (_ cell: T, _ indexPath: IndexPath) -> Void
     
     // ******************************* MARK: - Properties
     
     private let cell: T
     private weak var tableView: UITableView?
-    open weak var originalTableViewDelegate: UITableViewDelegate?
     private let configureCell: ConfigureCell
+    
+    weak var originalTableViewDelegate: UITableViewDelegate? {
+        return originalObject as? UITableViewDelegate
+    }
     
     // ******************************* MARK: - Initialization and Setup
     
-    private override init() { fatalError("Use init(tableView:) instead") }
-    
-    public init(cell: T, baseTableViewDelegate: UITableViewDelegate?, configureCell: @escaping ConfigureCell) {
+    init(cell: T, baseTableViewDelegate: UITableViewDelegate?, configureCell: @escaping ConfigureCell) {
         self.cell = cell
-        self.originalTableViewDelegate = baseTableViewDelegate
         self.configureCell = configureCell
         
-        super.init()
+        super.init(originalObject: baseTableViewDelegate as? NSObject)
     }
     
     init(cell: T, tableView: UITableView?, configureCell: @escaping ConfigureCell) {
         self.cell = cell
         self.tableView = tableView
-        self.originalTableViewDelegate = tableView?.delegate
         self.configureCell = configureCell
         
-        super.init()
+        super.init(originalObject: tableView?.delegate as? NSObject)
     }
     
     deinit {
         tableView?.delegate = originalTableViewDelegate
     }
     
-    // ******************************* MARK: - NSObject Methods
-    
-    override open func responds(to aSelector: Selector!) -> Bool {
-        var responds = super.responds(to: aSelector)
-        
-        if let originalTableViewDelegate = originalTableViewDelegate {
-            responds = responds || originalTableViewDelegate.responds(to: aSelector)
-        }
-        
-        return responds
-    }
-    
-    override open func forwardingTarget(for aSelector: Selector!) -> Any? {
-        if let target = super.forwardingTarget(for: aSelector) {
-            return target
-        } else if let originalTableViewDelegate = originalTableViewDelegate, originalTableViewDelegate.responds(to: aSelector) {
-            return originalTableViewDelegate
-        } else {
-            return nil
-        }
-    }
-    
-    
     // ******************************* MARK: - Private Methods
     
     // ******************************* MARK: - UITableViewDelegate
     
-    open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         configureCell(cell, indexPath)
         let size = cell.systemLayoutSizeFitting(tableView.bounds.size,
                                                 withHorizontalFittingPriority: .required,

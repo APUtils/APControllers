@@ -11,22 +11,23 @@ import UIKit
 /// Controller that improves UITableView scrolling and animation experience.
 /// - Note: You should assign tableView's `delegate` first and then create
 /// and store `EstimatedRowHeightController`. Everything else is automatic.
-open class EstimatedRowHeightController: NSObject, UITableViewDelegate {
+private final class EstimatedRowHeightController: ObjectProxy, UITableViewDelegate {
     
     // ******************************* MARK: - Private Properties
     
     private weak var tableView: UITableView?
-    private weak var originalTableViewDelegate: UITableViewDelegate?
     private var estimatedHeights: [IndexPath: CGFloat] = [:]
+    private var averageHeights: [Int: CGFloat] = [:]
+    
+    private weak var originalTableViewDelegate: UITableViewDelegate? {
+        return originalObject as? UITableViewDelegate
+    }
     
     // ******************************* MARK: - Initialization and Setup
     
-    private override init() { fatalError("Use init(tableView:) instead") }
-    
     init(baseTableViewDelegate: UITableViewDelegate) {
         UITableView._setupOnce
-        self.originalTableViewDelegate = baseTableViewDelegate
-        super.init()
+        super.init(originalObject: baseTableViewDelegate as? NSObject)
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(onIndexPathChange(_:)),
@@ -37,8 +38,7 @@ open class EstimatedRowHeightController: NSObject, UITableViewDelegate {
     init(tableView: UITableView) {
         UITableView._setupOnce
         self.tableView = tableView
-        self.originalTableViewDelegate = tableView.delegate
-        super.init()
+        super.init(originalObject: tableView.delegate as? NSObject)
         tableView.delegate = self
         
         NotificationCenter.default.addObserver(self,
@@ -51,48 +51,26 @@ open class EstimatedRowHeightController: NSObject, UITableViewDelegate {
         tableView?.delegate = originalTableViewDelegate
     }
     
-    // ******************************* MARK: - NSObject Methods
-    
-    override public func responds(to aSelector: Selector!) -> Bool {
-        var responds = super.responds(to: aSelector)
-        
-        if let originalTableViewDelegate = originalTableViewDelegate {
-            responds = responds || originalTableViewDelegate.responds(to: aSelector)
-        }
-        
-        return responds
-    }
-    
-    override public func forwardingTarget(for aSelector: Selector!) -> Any? {
-        if let target = super.forwardingTarget(for: aSelector) {
-            return target
-        } else if let originalTableViewDelegate = originalTableViewDelegate, originalTableViewDelegate.responds(to: aSelector) {
-            return originalTableViewDelegate
-        } else {
-            return nil
-        }
-    }
-    
     // ******************************* MARK: - Notifications
     
     @objc private func onIndexPathChange(_ notification: Notification) {
         guard let tableView = tableView else { return }
         
-        // -- open func reloadRows(at indexPaths: [IndexPath], with animation: UITableView.RowAnimation)
+        // -- func reloadRows(at indexPaths: [IndexPath], with animation: UITableView.RowAnimation)
         // When this method is called in an animation block defined by the beginUpdates()
         // and endUpdates() methods, it behaves similarly to deleteRows(at:with:).
         // The indexes that UITableView passes to the method are specified in the state
         // of the table view prior to any updates. This happens regardless of ordering of the
         // insertion, deletion, and reloading method calls within the animation block.
         
-        // -- open func deleteRows(at indexPaths: [IndexPath], with animation: UITableView.RowAnimation)
+        // -- func deleteRows(at indexPaths: [IndexPath], with animation: UITableView.RowAnimation)
         // Deletes are processed before inserts in batch operations.
         // This means the indexes for the deletions are processed relative
         // to the indexes of the table view’s state before the batch operation,
         // and the indexes for the insertions are processed relative
         // to the indexes of the state after all the deletions in the batch operation.
         
-        // -- open func insertRows(at indexPaths: [IndexPath], with animation: UITableView.RowAnimation)
+        // -- func insertRows(at indexPaths: [IndexPath], with animation: UITableView.RowAnimation)
         // When this method is called in an animation block defined by the beginUpdates() and endUpdates()
         // methods, UITableView defers any insertions of rows or sections until after it has handled
         // the deletions of rows or sections. This order is followed regardless of how the insertion
@@ -140,29 +118,27 @@ open class EstimatedRowHeightController: NSObject, UITableViewDelegate {
     
     // ******************************* MARK: - UITableViewDelegate
     
-    open func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        if let height = originalTableViewDelegate?.tableView?(tableView, estimatedHeightForRowAt: indexPath) {
-            return height
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        if let estimatedHeight = estimatedHeights[indexPath] {
+            return estimatedHeight
         } else {
-            if let estimatedHeight = estimatedHeights[indexPath] {
-                return estimatedHeight
-            } else {
-                let sameSectionIndexPaths = estimatedHeights.keys.filter({ $0.section == indexPath.section })
-                if sameSectionIndexPaths.hasElements {
-                    // Try guess and return average value
-                    return sameSectionIndexPaths.compactMap { estimatedHeights[$0] }.average().roundedToPixel
-                } else {
-                    return UITableView.automaticDimension
-                }
-            }
+            
+            return averageHeights[indexPath.section]?.roundedToPixel ?? UITableView.automaticDimension
         }
     }
     
-    open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         // Prevent cell stuck in zero size.
         // Table view won't queue for actual height if 0 is returned for estimated.
         if cell.bounds.height > 0 {
-            estimatedHeights[indexPath] = cell.bounds.height
+            if let _ = estimatedHeights[indexPath] {
+                // Just update height
+                estimatedHeights[indexPath] = cell.frame.height
+            } else {
+                // Update estimated height and average height
+                processHeight(cell.frame.height, indexPath: indexPath)
+            }
+            
         } else {
             estimatedHeights[indexPath] = nil
         }
@@ -170,9 +146,17 @@ open class EstimatedRowHeightController: NSObject, UITableViewDelegate {
         originalTableViewDelegate?.tableView?(tableView, willDisplay: cell, forRowAt: indexPath)
     }
     
-    open func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         estimatedHeights[indexPath] = cell.bounds.height
         originalTableViewDelegate?.tableView?(tableView, didEndDisplaying: cell, forRowAt: indexPath)
+    }
+    
+    private func processHeight(_ height: CGFloat, indexPath: IndexPath) {
+        let previousCount = CGFloat(estimatedHeights.count)
+        let nextCount = CGFloat(previousCount + 1)
+        let currentAverage = averageHeights[indexPath.section] ?? 0
+        averageHeights[indexPath.section] = (currentAverage * previousCount + height ) / nextCount
+        estimatedHeights[indexPath] = height
     }
 }
 
@@ -362,9 +346,9 @@ private extension UITableView {
 private var c_estimatedRowHeightControllerAssociationKey = 0
 
 public extension UITableView {
-    private var estimatedRowHeightController: EstimatedRowHeightController? {
+    private var estimatedRowHeightController: Any? {
         get {
-            return objc_getAssociatedObject(self, &c_estimatedRowHeightControllerAssociationKey) as? EstimatedRowHeightController
+            return objc_getAssociatedObject(self, &c_estimatedRowHeightControllerAssociationKey)
         }
         set {
             objc_setAssociatedObject(self, &c_estimatedRowHeightControllerAssociationKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)

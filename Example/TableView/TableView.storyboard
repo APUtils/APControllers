@@ -10,7 +10,7 @@
         <!--Table ViewVC-->
         <scene sceneID="xhn-q6-Rep">
             <objects>
-                <viewController storyboardIdentifier="TableViewVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="h3f-Zv-HwD" customClass="TableViewVC" customModule="APExtensions_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TableViewVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="h3f-Zv-HwD" customClass="TableViewVC" customModule="APControllers_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vcS-Yc-fVT"/>
                         <viewControllerLayoutGuide type="bottom" id="REM-QD-S0i"/>
@@ -43,6 +43,16 @@
                     </view>
                     <navigationItem key="navigationItem" id="ZAh-V0-cVx">
                         <barButtonItem key="backBarButtonItem" title=" " id="7bW-RY-0H9"/>
+                        <barButtonItem key="rightBarButtonItem" id="Kqd-bu-6cn">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gqL-lH-RhY">
+                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Randomize"/>
+                                <connections>
+                                    <action selector="onDebugTap:" destination="h3f-Zv-HwD" eventType="touchUpInside" id="WdS-EX-Pzq"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>

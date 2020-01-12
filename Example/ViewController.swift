@@ -19,4 +19,9 @@ final class ViewController: UIViewController {
         
         
     }
+    
+    @IBAction private func onTableViewTap(_ sender: Any) {
+        let vc = TableViewVC.instantiateFromStoryboard()
+        navigationController?.pushViewController(vc)
+    }
 }
