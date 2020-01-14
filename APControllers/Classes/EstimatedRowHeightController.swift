@@ -25,26 +25,12 @@ public final class EstimatedRowHeightController: ObjectProxy, UITableViewDelegat
     
     // ******************************* MARK: - Initialization and Setup
     
-    public init(baseTableViewDelegate: UITableViewDelegate) {
-        UITableView._setupOnce
-        super.init(originalObject: baseTableViewDelegate as? NSObject)
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(onIndexPathChange(_:)),
-                                               name: .uiTableView_IndexPathChanged_NotificationName,
-                                               object: tableView)
-    }
-    
     public init(tableView: UITableView) {
         UITableView._setupOnce
         self.tableView = tableView
         super.init(originalObject: tableView.delegate as? NSObject)
         tableView.delegate = self
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(onIndexPathChange(_:)),
-                                               name: .uiTableView_IndexPathChanged_NotificationName,
-                                               object: tableView)
+        tableView.onUpdateFinish = { [weak self] in self?.onIndexPathChange() }
     }
     
     deinit {
@@ -53,7 +39,7 @@ public final class EstimatedRowHeightController: ObjectProxy, UITableViewDelegat
     
     // ******************************* MARK: - Notifications
     
-    @objc private func onIndexPathChange(_ notification: Notification) {
+    @objc private func onIndexPathChange() {
         guard let tableView = tableView else { return }
         
         // -- func reloadRows(at indexPaths: [IndexPath], with animation: UITableView.RowAnimation)
@@ -210,11 +196,8 @@ private extension UITableView {
 
 // ******************************* MARK: - UITableView Methods Listening
 
-private extension NSNotification.Name {
-    static let uiTableView_IndexPathChanged_NotificationName = NSNotification.Name("uiTableView_IndexPathChanged_NotificationName")
-}
-
 private var c_isUpdatingAssociationKey = 0
+private var c_onUpdateFinishAssociationKey = 0
 private var c_insertIndexPathsAssociationKey = 0
 private var c_deleteIndexPathsAssociationKey = 0
 private var c_reloadIndexPathsAssociationKey = 0
@@ -228,6 +211,15 @@ private extension UITableView {
         }
         set {
             objc_setAssociatedObject(self, &c_isUpdatingAssociationKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+    
+    var onUpdateFinish: (() -> Void)? {
+        get {
+            return objc_getAssociatedObject(self, &c_onUpdateFinishAssociationKey) as? (() -> Void)
+        }
+        set {
+            objc_setAssociatedObject(self, &c_onUpdateFinishAssociationKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     
@@ -273,7 +265,7 @@ private extension UITableView {
         
         isUpdating = true
         _apextensions_performBatchUpdates(updates, completion: { success in
-            NotificationCenter.default.post(name: .uiTableView_IndexPathChanged_NotificationName, object: self)
+            self.onUpdateFinish?()
             self.insertIndexPaths = []
             self.deleteIndexPaths = []
             self.reloadIndexPaths = []
@@ -290,7 +282,7 @@ private extension UITableView {
     }
     
     @objc private func _apextensions_endUpdates() {
-        NotificationCenter.default.post(name: .uiTableView_IndexPathChanged_NotificationName, object: self)
+        onUpdateFinish?()
         insertIndexPaths = []
         deleteIndexPaths = []
         reloadIndexPaths = []
@@ -303,7 +295,7 @@ private extension UITableView {
     @objc private func _apextensions_insertRows(at indexPaths: [IndexPath], with animation: UITableView.RowAnimation) {
         insertIndexPaths.append(contentsOf: indexPaths)
         if !isUpdating {
-            NotificationCenter.default.post(name: .uiTableView_IndexPathChanged_NotificationName, object: self)
+            onUpdateFinish?()
             insertIndexPaths = []
         }
         
@@ -313,7 +305,7 @@ private extension UITableView {
     @objc private func _apextensions_deleteRows(at indexPaths: [IndexPath], with animation: UITableView.RowAnimation) {
         deleteIndexPaths.append(contentsOf: indexPaths)
         if !isUpdating {
-            NotificationCenter.default.post(name: .uiTableView_IndexPathChanged_NotificationName, object: self)
+            onUpdateFinish?()
             deleteIndexPaths = []
         }
         
@@ -323,7 +315,7 @@ private extension UITableView {
     @objc private func _apextensions_reloadRows(at indexPaths: [IndexPath], with animation: UITableView.RowAnimation) {
         reloadIndexPaths.append(contentsOf: indexPaths)
         if !isUpdating {
-            NotificationCenter.default.post(name: .uiTableView_IndexPathChanged_NotificationName, object: self)
+            onUpdateFinish?()
             reloadIndexPaths = []
         }
         
@@ -333,7 +325,7 @@ private extension UITableView {
     @objc private func _apextensions_moveRow(at indexPath: IndexPath, to newIndexPath: IndexPath) {
         moveIndexPaths.append((from: indexPath, to: newIndexPath))
         if !isUpdating {
-            NotificationCenter.default.post(name: .uiTableView_IndexPathChanged_NotificationName, object: self)
+            onUpdateFinish?()
             moveIndexPaths = []
         }
         
