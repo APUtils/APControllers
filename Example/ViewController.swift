@@ -24,4 +24,9 @@ final class ViewController: UIViewController {
         let vc = TableViewVC.instantiateFromStoryboard()
         navigationController?.pushViewController(vc)
     }
+    
+    @IBAction private func onReorderTableViewTap(_ sender: Any) {
+        let vc = ReorderTableViewVC.instantiateFromStoryboard()
+        navigationController?.pushViewController(vc)
+    }
 }

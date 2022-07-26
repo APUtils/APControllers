@@ -65,7 +65,7 @@ extension UITableView {
     }
 }
 
-public protocol CellConfigurator: class {
+public protocol CellConfigurator: AnyObject {
     func configureCell(_ cell: UITableViewCell, forRowAt indexPath: IndexPath)
 }
 
@@ -121,7 +121,6 @@ public extension UITableView {
     /// - warning: Replaces and proxies tableView's `delegate` property
     /// so be sure to call this method when tableView's `delegate` is already set.
     func optimizeCellHeightComputations<T: UITableViewCell>(cell: T, configureCell: @escaping (_ cell: T, _ indexPath: IndexPath) -> Void) {
-        
         computeRowHeightAutomatically(cell: cell, configureCell: configureCell)
         handleEstimatedSizeAutomatically = true
     }

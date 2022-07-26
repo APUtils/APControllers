@@ -1,35 +1,56 @@
 PODS:
   - APControllers (1.0.0)
-  - APExtensions (7.0.1):
-    - APExtensions/Abstractions (= 7.0.1)
-    - APExtensions/Core (= 7.0.1)
-    - APExtensions/Storyboard (= 7.0.1)
-    - APExtensions/ViewConfiguration (= 7.0.1)
-  - APExtensions/Abstractions (7.0.1)
-  - APExtensions/Core (7.0.1)
-  - APExtensions/Storyboard (7.0.1)
-  - APExtensions/ViewConfiguration (7.0.1)
+  - APExtensions (10.1.8):
+    - APExtensions/Core (= 10.1.8)
+    - APExtensions/Storyboard (= 10.1.8)
+    - APExtensions/ViewModel (= 10.1.8)
+  - APExtensions/Core (10.1.8):
+    - RoutableLogger
+  - APExtensions/Storyboard (10.1.8)
+  - APExtensions/ViewModel (10.1.8)
+  - BaseClasses (6.0.0):
+    - RoutableLogger (>= 9.1.6)
+  - RoutableLogger (11.0.0)
+  - SwiftReorder (7.2.0)
 
 DEPENDENCIES:
   - APControllers (from `../`)
-  - APExtensions (from `https://github.com/APUtils/APExtensions`, branch `master`)
+  - APExtensions (from `https://github.com/APUtils/APExtensions`)
+  - BaseClasses (from `https://github.com/APUtils/BaseClasses`)
+  - SwiftReorder (from `https://github.com/anton-plebanovich/SwiftReorder`)
+
+SPEC REPOS:
+  trunk:
+    - RoutableLogger
 
 EXTERNAL SOURCES:
   APControllers:
     :path: "../"
   APExtensions:
-    :branch: master
     :git: https://github.com/APUtils/APExtensions
+  BaseClasses:
+    :git: https://github.com/APUtils/BaseClasses
+  SwiftReorder:
+    :git: https://github.com/anton-plebanovich/SwiftReorder
 
 CHECKOUT OPTIONS:
   APExtensions:
-    :commit: bbb1b025c937b9c638d91813a2f50889863a7056
+    :commit: 852b62abd1515c8ec11dec7b2d7213dec1ec7d61
     :git: https://github.com/APUtils/APExtensions
+  BaseClasses:
+    :commit: beec89d78ad3c5b643ba7d32b9b302d8b76dbf6c
+    :git: https://github.com/APUtils/BaseClasses
+  SwiftReorder:
+    :commit: fcf7eb67ec93fb1b20ec7b7c518ffeeb2c71b71b
+    :git: https://github.com/anton-plebanovich/SwiftReorder
 
 SPEC CHECKSUMS:
-  APControllers: e1d3593d20f76e9db49ab44cb12a1d12cf0c6c01
-  APExtensions: e0377240c9db7bc42c3b864c039ba70c1b4034a3
+  APControllers: d924f93e40d3778d39c75249a02fe2d76fb46311
+  APExtensions: c67bbacc1e39e07d0ed63f24905ba1013bf13988
+  BaseClasses: c9c3c7532dedbc7bf839917fbbff8234ede087b2
+  RoutableLogger: 70188daca734d067967e4f464450582ca189b4d5
+  SwiftReorder: d687883abf5f2327268e006b038025a6fc515e34
 
-PODFILE CHECKSUM: 4bf78aeca8e09bc42bccace2121edece85b4759d
+PODFILE CHECKSUM: 41c7df9d830f619ec03f22a21c9d57a560763500
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.11.3

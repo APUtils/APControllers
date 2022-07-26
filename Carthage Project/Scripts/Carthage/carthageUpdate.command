@@ -9,13 +9,17 @@ hash xcodeproj 2>/dev/null || { printf >&2 "\n${red_color}Xcodeproj is required.
 set -e
 
 # Assume scripts are placed in /Scripts/Carthage dir
-base_dir=$(dirname "$0")
-cd "$base_dir"
+_script_call_path="${BASH_SOURCE%/*}"
+if [[ ! -d "${_script_call_path}" ]]; then _script_call_path=$(dirname "$0"); fi
+cd "${_script_call_path}"
 
-. "utils.sh"
+# includes
+. ./utils.sh
 
 cd ..
 cd ..
+
+applyXcode12Workaround
 
 # Try one level up if didn't find Cartfile.
 if [ ! -f "Cartfile" ]; then
@@ -40,9 +44,12 @@ fi
 
 # Update framework(s)
 echo "Synchronizing Carthage dependencies..."
-carthage update ${framework_name} --platform iOS --cache-builds --use-ssh
+carthage update ${framework_name} --use-xcframeworks --platform iOS --cache-builds
 echo ""
 
 # Update md5 check sum
 cartSum=`{ cat Cartfile.resolved; xcrun swift -version; } | md5`
-echo $cartSum > Carthage/cartSum.txt
+cart_sum_file='Carthage/cartSum.txt'
+if [ -f "${cart_sum_file}" ]; then
+    echo "${cartSum}" > "${cart_sum_file}"
+fi

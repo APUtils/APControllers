@@ -27,6 +27,7 @@ public final class EstimatedRowHeightController: ObjectProxy, UITableViewDelegat
     
     public init(tableView: UITableView) {
         UITableView._setupOnce
+        tableView.rowHeight = UITableView.automaticDimension
         self.tableView = tableView
         super.init(originalObject: tableView.delegate as? NSObject)
         tableView.delegate = self

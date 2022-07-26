@@ -1,6 +1,5 @@
 # APControllers
 
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Version](https://img.shields.io/cocoapods/v/APControllers.svg?style=flat)](http://cocoapods.org/pods/APControllers)
 [![License](https://img.shields.io/cocoapods/l/APControllers.svg?style=flat)](http://cocoapods.org/pods/APControllers)
 [![Platform](https://img.shields.io/cocoapods/p/APControllers.svg?style=flat)](http://cocoapods.org/pods/APControllers)
@@ -10,19 +9,12 @@ A helpful collection of controllers.
 
 ## Example
 
-Clone the repo and then open `Carthage Project/APControllers.xcodeproj`
+- Clone the repo
+- Open `Pods Project` directory
+- Execute `pod install`
+- Open `APControllers.xcworkspace`
 
 ## Installation
-
-#### Carthage
-
-Please check [official guide](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos)
-
-Cartfile:
-
-```
-github "APUtils/APControllers" ~> 1.0
-```
 
 #### CocoaPods
 
@@ -30,7 +22,7 @@ APControllers is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'APControllers', '~> 1.0'
+pod 'APControllers', '~> 2.0'
 ```
 
 ## Usage

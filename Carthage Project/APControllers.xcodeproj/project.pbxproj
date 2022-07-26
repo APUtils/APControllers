@@ -27,6 +27,15 @@
 		0D9A78A923C0CBD600BE1A8A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9A78A823C0CBD600BE1A8A /* Utils.swift */; };
 		0DBC7CE823B9577200CD0EA1 /* APExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DBC7CE723B9577200CD0EA1 /* APExtensions.framework */; };
 		0DC724F423CB8792005039BC /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC724F323CB8792005039BC /* UITableView+Extension.swift */; };
+		0DD06C7223D2E2F800275B01 /* ReorderTableView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DD06C6C23D2E2F800275B01 /* ReorderTableView.storyboard */; };
+		0DD06C7323D2E2F800275B01 /* ReorderTableViewCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD06C6D23D2E2F800275B01 /* ReorderTableViewCellVM.swift */; };
+		0DD06C7423D2E2F800275B01 /* ReorderTableViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD06C6E23D2E2F800275B01 /* ReorderTableViewVM.swift */; };
+		0DD06C7523D2E2F800275B01 /* ReorderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD06C6F23D2E2F800275B01 /* ReorderTableViewCell.swift */; };
+		0DD06C7623D2E2F800275B01 /* ReorderTableViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD06C7023D2E2F800275B01 /* ReorderTableViewVC.swift */; };
+		0DD06C7723D2E2F800275B01 /* ReorderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DD06C7123D2E2F800275B01 /* ReorderTableViewCell.xib */; };
+		0DD06C7923D2E80400275B01 /* ReorderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD06C7823D2E80400275B01 /* ReorderTableView.swift */; };
+		1117656FB58636C3425E0C6B /* SwiftReorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B055E58DEC26E65A60D017 /* SwiftReorder.framework */; };
+		7EB6BF3A5DDA27B6E48F647C /* BaseClasses.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB1480743C230A9D955B9AD /* BaseClasses.framework */; };
 		E202681822117D03004CC28A /* APControllers.h in Headers */ = {isa = PBXBuildFile; fileRef = E202681622117D03004CC28A /* APControllers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E275E06F229FF84E00E9900C /* APControllers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E202681322117D03004CC28A /* APControllers.framework */; };
 		E275E08322A03A8900E9900C /* APControllers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E202681322117D03004CC28A /* APControllers.framework */; };
@@ -105,11 +114,19 @@
 		0D9A78A823C0CBD600BE1A8A /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		0DBC7CE723B9577200CD0EA1 /* APExtensions.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APExtensions.framework; path = ../Carthage/Build/iOS/APExtensions.framework; sourceTree = "<group>"; };
 		0DC724F323CB8792005039BC /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		0DD06C6C23D2E2F800275B01 /* ReorderTableView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReorderTableView.storyboard; sourceTree = "<group>"; };
+		0DD06C6D23D2E2F800275B01 /* ReorderTableViewCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderTableViewCellVM.swift; sourceTree = "<group>"; };
+		0DD06C6E23D2E2F800275B01 /* ReorderTableViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderTableViewVM.swift; sourceTree = "<group>"; };
+		0DD06C6F23D2E2F800275B01 /* ReorderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderTableViewCell.swift; sourceTree = "<group>"; };
+		0DD06C7023D2E2F800275B01 /* ReorderTableViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderTableViewVC.swift; sourceTree = "<group>"; };
+		0DD06C7123D2E2F800275B01 /* ReorderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReorderTableViewCell.xib; sourceTree = "<group>"; };
+		0DD06C7823D2E80400275B01 /* ReorderTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderTableView.swift; sourceTree = "<group>"; };
 		27A65933230C2FF4F758F562 /* carthageUpdate.command */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; name = carthageUpdate.command; path = Scripts/Carthage/carthageUpdate.command; sourceTree = "<group>"; };
 		40B2AC5FE675C1BC6FEA20DC /* Nimble_Snapshots.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble_Snapshots.framework; path = Carthage/Build/iOS/Nimble_Snapshots.framework; sourceTree = "<group>"; };
 		48F98DA54A9774DA50A42978 /* DEPLOY PROCESS.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = "DEPLOY PROCESS.md"; path = "../DEPLOY PROCESS.md"; sourceTree = "<group>"; };
 		4F0FB0998B9E0BA1DBA0B5C0 /* APControllers.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = APControllers.podspec; path = ../APControllers.podspec; sourceTree = "<group>"; };
 		4FBAC3F5242A68EA32D78E21 /* podCheck.command */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; name = podCheck.command; path = ../podCheck.command; sourceTree = "<group>"; };
+		55B055E58DEC26E65A60D017 /* SwiftReorder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftReorder.framework; path = Carthage/Build/iOS/SwiftReorder.framework; sourceTree = "<group>"; };
 		5FB24080F7F33A547E8D4B32 /* checkBuild.command */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; name = checkBuild.command; path = ../checkBuild.command; sourceTree = "<group>"; };
 		5FCB19447C6E1C9AE711BED2 /* CHANGELOG.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
 		63DAA65564C41ABAA17F7FED /* podUpdate.command */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; name = podUpdate.command; path = "../Pods Project/Scripts/Cocoapods/podUpdate.command"; sourceTree = "<group>"; };
@@ -119,6 +136,7 @@
 		7C5941DD737229046FCE9F7F /* .cocoadocs.yml */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.yaml; name = .cocoadocs.yml; path = ../.cocoadocs.yml; sourceTree = "<group>"; };
 		942547B30E85EC7D0B2AF8FF /* podPush.command */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; name = podPush.command; path = ../podPush.command; sourceTree = "<group>"; };
 		ABCBB5492A14510AEC89BB73 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		ADB1480743C230A9D955B9AD /* BaseClasses.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaseClasses.framework; path = Carthage/Build/iOS/BaseClasses.framework; sourceTree = "<group>"; };
 		B297DC76A924AA449EC91A37 /* .gitignore */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
 		E202681322117D03004CC28A /* APControllers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = APControllers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E202681622117D03004CC28A /* APControllers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APControllers.h; sourceTree = "<group>"; };
@@ -154,6 +172,8 @@
 			files = (
 				E275E08322A03A8900E9900C /* APControllers.framework in Frameworks */,
 				0DBC7CE823B9577200CD0EA1 /* APExtensions.framework in Frameworks */,
+				7EB6BF3A5DDA27B6E48F647C /* BaseClasses.framework in Frameworks */,
+				1117656FB58636C3425E0C6B /* SwiftReorder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +214,20 @@
 				0D3445E123CA86640053C1C4 /* TableViewVM.swift */,
 			);
 			path = TableView;
+			sourceTree = "<group>";
+		};
+		0DD06C6B23D2E2DD00275B01 /* ReorderTableView */ = {
+			isa = PBXGroup;
+			children = (
+				0DD06C6C23D2E2F800275B01 /* ReorderTableView.storyboard */,
+				0DD06C7823D2E80400275B01 /* ReorderTableView.swift */,
+				0DD06C6F23D2E2F800275B01 /* ReorderTableViewCell.swift */,
+				0DD06C7123D2E2F800275B01 /* ReorderTableViewCell.xib */,
+				0DD06C6D23D2E2F800275B01 /* ReorderTableViewCellVM.swift */,
+				0DD06C7023D2E2F800275B01 /* ReorderTableViewVC.swift */,
+				0DD06C6E23D2E2F800275B01 /* ReorderTableViewVM.swift */,
+			);
+			path = ReorderTableView;
 			sourceTree = "<group>";
 		};
 		1834AC72A69DC91E1F3B8EDA /* _Carthage */ = {
@@ -254,6 +288,7 @@
 		E2A7394C2260CFC700E97D55 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				0DD06C6B23D2E2DD00275B01 /* ReorderTableView */,
 				0D3445D123CA86120053C1C4 /* TableView */,
 				E2A7394D2260CFC700E97D55 /* AppDelegate.swift */,
 				E2A7394F2260CFC700E97D55 /* ViewController.swift */,
@@ -302,10 +337,12 @@
 			children = (
 				1834AC72A69DC91E1F3B8EDA /* _Carthage */,
 				0DBC7CE723B9577200CD0EA1 /* APExtensions.framework */,
+				ADB1480743C230A9D955B9AD /* BaseClasses.framework */,
 				0491600AEA500A849511DBA7 /* FBSnapshotTestCase.framework */,
-				40B2AC5FE675C1BC6FEA20DC /* Nimble_Snapshots.framework */,
 				E2A7396D2260D99900E97D55 /* Nimble.framework */,
+				40B2AC5FE675C1BC6FEA20DC /* Nimble_Snapshots.framework */,
 				E2A7396C2260D99900E97D55 /* Quick.framework */,
+				55B055E58DEC26E65A60D017 /* SwiftReorder.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -440,8 +477,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DD06C7223D2E2F800275B01 /* ReorderTableView.storyboard in Resources */,
 				E2A739582260CFC800E97D55 /* LaunchScreen.storyboard in Resources */,
 				0D3445E723CA86730053C1C4 /* TableViewCell.xib in Resources */,
+				0DD06C7723D2E2F800275B01 /* ReorderTableViewCell.xib in Resources */,
 				E2A739552260CFC800E97D55 /* Assets.xcassets in Resources */,
 				0D3445E523CA86730053C1C4 /* TableView.storyboard in Resources */,
 				E2A739532260CFC700E97D55 /* Main.storyboard in Resources */,
@@ -485,12 +524,16 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/APExtensions.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/BaseClasses.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftReorder.framework",
 			);
 			name = "Carthage Copy";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/APExtensions.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BaseClasses.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftReorder.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -537,10 +580,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D3445EA23CA86730053C1C4 /* TableViewVM.swift in Sources */,
+				0DD06C7523D2E2F800275B01 /* ReorderTableViewCell.swift in Sources */,
 				0D3445E623CA86730053C1C4 /* TableViewCell.swift in Sources */,
 				0D3445E923CA86730053C1C4 /* TableViewVC.swift in Sources */,
 				E2A739502260CFC700E97D55 /* ViewController.swift in Sources */,
+				0DD06C7423D2E2F800275B01 /* ReorderTableViewVM.swift in Sources */,
+				0DD06C7623D2E2F800275B01 /* ReorderTableViewVC.swift in Sources */,
 				0D3445E823CA86730053C1C4 /* TableViewCellVM.swift in Sources */,
+				0DD06C7923D2E80400275B01 /* ReorderTableView.swift in Sources */,
+				0DD06C7323D2E2F800275B01 /* ReorderTableViewCellVM.swift in Sources */,
 				E2A7394E2260CFC700E97D55 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -788,7 +836,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = ../Example/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -810,7 +858,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = ../Example/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

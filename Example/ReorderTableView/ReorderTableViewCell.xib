@@ -9,14 +9,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="88q-3o-deY" customClass="TableViewCell" customModule="APControllers_Example" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="88q-3o-deY" customClass="ReorderTableViewCell" customModule="APControllers_Example" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="88q-3o-deY" id="QMx-E4-zHa">
                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3N-Ia-Mhs">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vi0-Dm-RWs">
                         <rect key="frame" x="0.0" y="4" width="375" height="36"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -25,15 +25,15 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="s3N-Ia-Mhs" secondAttribute="bottom" constant="4" id="CAh-fs-V69"/>
-                    <constraint firstItem="s3N-Ia-Mhs" firstAttribute="top" secondItem="QMx-E4-zHa" secondAttribute="top" constant="4" id="MVd-aT-Ega"/>
-                    <constraint firstAttribute="trailing" secondItem="s3N-Ia-Mhs" secondAttribute="trailing" id="tGK-DT-8er"/>
-                    <constraint firstItem="s3N-Ia-Mhs" firstAttribute="leading" secondItem="QMx-E4-zHa" secondAttribute="leading" id="tR4-dr-zXJ"/>
+                    <constraint firstItem="vi0-Dm-RWs" firstAttribute="top" secondItem="QMx-E4-zHa" secondAttribute="top" constant="4" id="CHl-28-SkC"/>
+                    <constraint firstAttribute="trailing" secondItem="vi0-Dm-RWs" secondAttribute="trailing" id="RRw-7Z-anw"/>
+                    <constraint firstAttribute="bottom" secondItem="vi0-Dm-RWs" secondAttribute="bottom" constant="4" id="aMv-Qh-E0f"/>
+                    <constraint firstItem="vi0-Dm-RWs" firstAttribute="leading" secondItem="QMx-E4-zHa" secondAttribute="leading" id="ovo-Qe-Egx"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
-                <outlet property="label" destination="s3N-Ia-Mhs" id="qUW-BG-daf"/>
+                <outlet property="label" destination="vi0-Dm-RWs" id="SWa-BQ-drU"/>
             </connections>
             <point key="canvasLocation" x="73" y="44"/>
         </tableViewCell>
